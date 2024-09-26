@@ -1,3 +1,14 @@
+# Chemins des fichiers
+chemin_texte = './Sauvegarde/texte.txt'
+chemin_clef = './Sauvegarde/clef.txt'
+chemin_sortie = './Sauvegarde/texte_chiffre.txt'
+
+def texteFichier(chemin_texte, chemin_clef):
+    """Lit les fichiers texte et clé et retourne leur contenu. On l'utilisera si l'utilisateur veut utiliser des fichiers pour la fonction."""
+    texte = lire_fichier(chemin_texte)
+    clef = lire_fichier(chemin_clef)
+    return texte, clef
+
 def lire_fichier(chemin):
     """Lit le contenu d'un fichier et le retourne sous forme de chaîne de caractères.
     Entrée : chemin (str) le chemin du fichier à lire
@@ -64,14 +75,31 @@ def chiffrementVigenere(texte, clef):
     ecrire_fichier(chemin_sortie, texteChiffre)
     return texteChiffre
 
-# Chemins des fichiers
-chemin_texte = './Sauvegarde/texte.txt'
-chemin_clef = './Sauvegarde/clef.txt'
-chemin_sortie = './Sauvegarde/texte_chiffre.txt'
+def dechiffrementVigenere(texte, clef):
+    """Déchiffre un texte chiffré avec la méthode de Vigenère en suivant l'ordre de l'alphabet.
+    Entrée : texte (str) le texte chiffré, clef (str) la clé de chiffrement
+    Sortie : texteDechiffre (str) le texte déchiffré"""
 
-def texteFichier(chemin_texte, chemin_clef):
-    """Lit les fichiers texte et clé et retourne leur contenu. On l'utilisera si l'utilisateur veut utiliser des fichiers pour la fonction."""
-    texte = lire_fichier(chemin_texte)
-    clef = lire_fichier(chemin_clef)
-    return texte, clef
+    texteDechiffre = ""
+    rsltListe = []  # Liste pour stocker le résultat déchiffré
+    clefTexte = []  # Liste pour stocker la clé répétée
 
+    # Remplir clefTexte avec la clé répétée
+    for i in range(len(texte)):
+        clefTexte.append(clef[i % len(clef)])
+
+    # Déchiffrer chaque caractère du texte
+    for i in range(len(texte)):
+        char_code = car_vers_index(texte[i])  # Convertir le caractère en indice
+        key_code = car_vers_index(clefTexte[i])  # Convertir le caractère de la clé en indice
+        if 'A' <= texte[i] <= 'Z' or 'a' <= texte[i] <= 'z':
+            # Déchiffrer les lettres en suivant l'ordre de l'alphabet
+            char_code_dechiffre = (char_code - key_code) % 26
+            rsltListe.append(index_vers_car(char_code_dechiffre, texte[i].isupper()))
+        else:
+            # Déchiffrer les caractères spéciaux et espaces en utilisant le code Unicode
+            rsltListe.append(chr((char_code - key_code) % 1114112))
+
+    # Convertir la liste en chaîne de caractères
+    texteDechiffre = ''.join(rsltListe)
+    return texteDechiffre
