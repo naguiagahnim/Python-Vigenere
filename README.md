@@ -30,9 +30,6 @@
     - [ Installation](#-installation)
     - [ Usage](#-usage)
     - [ Tests](#-tests)
-- [ Project Roadmap](#-project-roadmap)
-- [ Contributing](#-contributing)
-- [ License](#-license)
 - [ Acknowledgments](#-acknowledgments)
 
 ---
@@ -72,8 +69,8 @@ This project implements the Vigenère cipher for encryption and decryption of te
 
 | File | Summary |
 | --- | --- |
-| [main.py](https://github.com/naguiagahnim/Python-Vigenere/blob/main/main.py) | <code>❯ REPLACE-ME</code> |
-| [module.py](https://github.com/naguiagahnim/Python-Vigenere/blob/main/module.py) | <code>❯ REPLACE-ME</code> |
+| [main.py](https://github.com/naguiagahnim/Python-Vigenere/blob/main/main.py) | <code>❯ The main file that is executed</code> |
+| [module.py](https://github.com/naguiagahnim/Python-Vigenere/blob/main/module.py) | <code>❯ The file containing all of the functions</code> |
 
 </details>
 
@@ -81,9 +78,9 @@ This project implements the Vigenère cipher for encryption and decryption of te
 
 | File | Summary |
 | --- | --- |
-| [texte_chiffre.txt](https://github.com/naguiagahnim/Python-Vigenere/blob/main/Sauvegarde/texte_chiffre.txt) | <code>❯ REPLACE-ME</code> |
-| [texte.txt](https://github.com/naguiagahnim/Python-Vigenere/blob/main/Sauvegarde/texte.txt) | <code>❯ REPLACE-ME</code> |
-| [clef.txt](https://github.com/naguiagahnim/Python-Vigenere/blob/main/Sauvegarde/clef.txt) | <code>❯ REPLACE-ME</code> |
+| [texte_chiffre.txt](https://github.com/naguiagahnim/Python-Vigenere/blob/main/Sauvegarde/texte_chiffre.txt) | <code>❯ The file saving the encrypted text</code> |
+| [texte.txt](https://github.com/naguiagahnim/Python-Vigenere/blob/main/Sauvegarde/texte.txt) | <code>❯ An input file for the functions, containing the decrypted text</code> |
+| [clef.txt](https://github.com/naguiagahnim/Python-Vigenere/blob/main/Sauvegarde/clef.txt) | <code>❯An input file for the functions, containing the key</code> |
 
 </details>
 
