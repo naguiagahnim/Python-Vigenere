@@ -38,7 +38,7 @@
 
 ##  Overview
 
-This project implements the Vigenère cipher for encryption and decryption of text. It includes functions for both encrypting and decrypting messages using a given key, and handles both alphabetic and special characters (with a slight touch of absurdism).
+This project implements the Vigenère cipher for encryption and decryption of text. It includes functions for both encrypting and decrypting messages using a given key, and handles both alphabetic and special characters.
 
 ---
 
@@ -47,7 +47,7 @@ This project implements the Vigenère cipher for encryption and decryption of te
 - Encrypts text using the Vigenère cipher.
 - Decrypts text using the Vigenère cipher.
 - Handles both alphabetic and special characters.
-- (WIP) Implements the Kasiski method for cryptanalysis.
+- Implements the Kasiski method for cryptanalysis.
 
 ---
 
