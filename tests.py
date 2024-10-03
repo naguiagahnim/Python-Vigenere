@@ -1,9 +1,12 @@
-from module import *
+from kasiski import *
+from gestion_fichiers import *
+from vigenere import *
+import time
 
 def test_chiffrement():
     """
     Vérifie que la fonction `chiffrementVigenere` fonctionne correctement.
-    Vérifie que le texte chiffré  est celui attendu et que le texte chiffré  est le même que celui dans le fichier texte_chiffre.txt.
+    Vérifie que le texte chiffré est celui attendu et que le texte chiffré est le même que celui dans le fichier texte_chiffre.txt.
     Entrée : le texte, la clef sous forme de fichiers
     Sortie : Rien
     """
@@ -26,19 +29,9 @@ def test_dechiffrement():
     """
     Vérifie que la fonction `dechiffrementVigenere` fonctionne correctement.
     Vérifie que le texte déchiffré est le même que le texte original.
-    Entrée : le texte chiffré  et la clef sous forme de fichiers
+    Entrée : le texte chiffré et la clef sous forme de fichiers
     Sortie : Rien
     """
-    chemin_texte_chiffre = './Sauvegarde/texte_chiffre.txt'
-    chemin_clef = './Sauvegarde/clef.txt'
-
-    texte_chiffre = lire_fichier(chemin_texte_chiffre)
-    clef = lire_fichier(chemin_clef)
-    texte_dechiffre_attendu = lire_fichier("./Sauvegarde/texte.txt")
-
-    texte_dechiffre = dechiffrementVigenere(texte_chiffre, clef)
-
-    assert texte_dechiffre == texte_dechiffre_attendu, f"Attendu {texte_dechiffre_attendu}, mais {texte_dechiffre} fourni"
     chemin_texte_chiffre = './Sauvegarde/texte_chiffre.txt'
     chemin_clef = './Sauvegarde/clef.txt'
 
@@ -68,28 +61,44 @@ def test_chiffrement_dechiffrement():
 
     assert texte_dechiffre.replace(" ", "").lower() == texte.replace(" ", "").lower(), \
         f"Attendu {texte.replace(' ', '').lower()}, mais {texte_dechiffre.replace(' ', '').lower()} fourni"
-    chemin_texte = './Sauvegarde/texte.txt'
-    chemin_clef = './Sauvegarde/clef.txt'
 
-    texte = lire_fichier(chemin_texte)
-    clef = lire_fichier(chemin_clef)
 
-    texte_chiffre = chiffrementVigenere(texte, clef)
-    texte_dechiffre = dechiffrementVigenere(texte_chiffre, clef)
-
-    assert texte_dechiffre.replace(" ", "").lower() == texte.replace(" ", "").lower(), \
-        f"Attendu {texte.replace(' ', '').lower()}, mais {texte_dechiffre.replace(' ', '').lower()} fourni"
 def test_kasiski():
     """
     Vérifie que la fonction `kasiski` fonctionne correctement.
-    Entrée : le texte chiffré sous forme de fichier
+    Entrée : Rien
     Sortie : Rien
     """
-    chemin_texte_chiffre = './Sauvegarde/texte_chiffre.txt'
+    entree_camus_non_chiffree = lire_fichier("./Sauvegarde/texte_chiffre_tests_camus.txt")
+    entree_vian_non_chiffree = lire_fichier("./Sauvegarde/texte_chiffre_tests_vian.txt")
+    entree_camus = chiffrementVigenere(entree_camus_non_chiffree, "ABSURDE")
+    entree_vian = chiffrementVigenere(entree_vian_non_chiffree, "BORIS")
+    cle_attendue_camus = 7
+    cle_attendue_vian = 5
 
-    texte_chiffre = lire_fichier(chemin_texte_chiffre)
-    assert texte_chiffre, "Le texte chiffré est vide"
+    assert kasiski(entree_camus) == cle_attendue_camus, f"Attendu {cle_attendue_camus}, mais {kasiski(entree_camus)} fourni"
+    assert kasiski(entree_vian) == cle_attendue_vian, f"Attendu {cle_attendue_vian}, mais {kasiski(entree_vian)} fourni"
 
-    taille_clef_attendue = 7
-    taille_clef = kasiski(texte_chiffre)
-    assert taille_clef is not None, "La taille de la clef est None"
+def lancerTests() :
+    separateur = '\n-------------------------------------\n'
+    temps_avant_exec = time.time()
+    test_chiffrement()
+    temps_apres_exec = time.time()
+    print("Temps écoulé pour le chiffrement: ", temps_apres_exec - temps_avant_exec, " secondes.")
+    temps_avant_exec = time.time()
+    print(separateur)
+    test_dechiffrement()
+    temps_apres_exec = time.time()
+    print("Temps écoulé pour le déchiffrement: ", temps_apres_exec - temps_avant_exec, " secondes.")
+    temps_avant_exec = time.time()
+    print(separateur)
+    test_chiffrement_dechiffrement()
+    temps_apres_exec = time.time()
+    print("Temps écoulé pour le chiffrement et le déchiffrement: ", temps_apres_exec - temps_avant_exec, " secondes.")
+    temps_avant_exec = time.time()
+    print(separateur)
+    test_kasiski()
+    temps_apres_exec = time.time()
+    print("Temps écoulé pour kasiski: ", temps_apres_exec - temps_avant_exec, " secondes.")
+    print(separateur)
+    print("Tous les tests fonctionnent.")

@@ -60,7 +60,7 @@ This project implements the Vigenère cipher for encryption and decryption of te
     │   ├── texte.txt
     │   └── texte_chiffre.txt
     ├── main.py
-    └── module.py
+    └── kasiski.py
 ```
 
 ---
