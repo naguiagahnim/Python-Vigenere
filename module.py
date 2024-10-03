@@ -42,7 +42,6 @@ def chiffrementVigenere(texte, clef):
             texteChiffre.append(chr((char_code + key_code) % 1114112))
 
     texteChiffre = ''.join(texteChiffre)
-    ecrire_fichier(chemin_sortie, texteChiffre)
     return texteChiffre
 
 def dechiffrementVigenere(texte, clef):

@@ -19,6 +19,8 @@
 
 <br>
 
+![Camus](https://media1.tenor.com/m/aNzzrsihnysAAAAC/albertcamus.gif)
+
 #####  Quick Links
 
 - [ Overview](#-overview)
@@ -36,7 +38,7 @@
 
 ##  Overview
 
-This project implements the Vigenère cipher for encryption and decryption of text. It includes functions for both encrypting and decrypting messages using a given key, and handles both alphabetic and special characters.
+This project implements the Vigenère cipher for encryption and decryption of text. It includes functions for both encrypting and decrypting messages using a given key, and handles both alphabetic and special characters (with a slight touch of absurdism).
 
 ---
 
