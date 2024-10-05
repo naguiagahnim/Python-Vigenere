@@ -33,6 +33,8 @@ def menu():
             print("a - texte.txt")
             print("b - clef.txt")
             print("c - texte_chiffre.txt")
+            print("d - texte_chiffre_tests_camus.txt")
+            print("e - texte_chiffre_tests_vian.txt")
             choix_fichier = input("Choisissez un fichier: ")
             if choix_fichier == 'a':
                 fichier_affiche = lire_fichier(chemin_texte)
@@ -40,14 +42,18 @@ def menu():
                 fichier_affiche = lire_fichier(chemin_clef)
             elif choix_fichier == 'c':
                 fichier_affiche = lire_fichier(chemin_texte_chiffre)
+            elif choix_fichier == 'd':
+                fichier_affiche = lire_fichier("./Sauvegarde/texte_chiffre_tests_camus.txt")
+            elif choix_fichier == 'e':
+                fichier_affiche = lire_fichier("./Sauvegarde/texte_chiffre_tests_vian.txt")
             else:
                 print("Choix invalide")
                 continue
-            print("Contenu du fichier : ", lire_fichier(fichier_affiche))
+            print("Contenu du fichier : ", fichier_affiche)
         elif choix == '4':
             texte_chiffre = lire_fichier(chemin_texte_chiffre)
             clef = kasiski(texte_chiffre)
-            print("Clef trouvée par la méthode de Kasiski: ", clef)
+            print("Clef du fichier texte_chiffre.txt trouvée par la méthode de Kasiski: ", clef)
         elif choix == '5':
             lancerTests()
         elif choix == '6':
